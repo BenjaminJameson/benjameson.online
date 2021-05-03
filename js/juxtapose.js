@@ -169,14 +169,14 @@
   }
 
   function getPageX(e) {
-    
+
     var pageX;
     if (e.pageX) {
       pageX = e.pageX;
     }
     else if (e.touches) {
       // bj wrote this line, to make the image scroll on mobile without the slider jumping
-      if (e.target.tagName != "IMG"){
+      if (e.target.tagName != "IMG") {
         pageX = e.touches[0].pageX;
       }
     }
@@ -556,12 +556,20 @@
 
       this.slider.addEventListener("touchstart", function (e) {
         e = e || window.event;
+        // bj wrote this little line to stop the scrolling and slider at same time
+        if (e.target.tagName != "IMG") {
+          e.preventDefault();
+        }
         // e.preventDefault();
         e.stopPropagation();
         self.updateSlider(e, true);
 
         this.addEventListener("touchmove", function (e) {
           e = e || window.event;
+          // bj wrote this little line to stop the scrolling and slider at same time
+          if (e.target.tagName != "IMG") {
+            e.preventDefault();
+          }
           // e.preventDefault();
           e.stopPropagation();
           self.updateSlider(event, false);
