@@ -2,8 +2,8 @@
 window.onload = function () {
   const chooseFileButton = document.getElementById("choosefilebutton");
   chooseFileButton.addEventListener("change", updateImageDisplay);
-  let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-  juxtaposeLogo.classList.add("is-hidden");
+  // let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
+  // juxtaposeLogo.classList.add("is-hidden");
 }
 
 

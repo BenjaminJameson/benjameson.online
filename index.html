@@ -13,7 +13,8 @@
     <script defer="" src="js/app.js"></script>
     <script defer="" src="https://cdnjs.deepai.org/deepai.min.js"></script>
     <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+    <!-- <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css"> -->
+    <link rel="stylesheet" href="node_modules/juxtaposejs/build/css/juxtapose.css">
 </head>
 
 <style>
@@ -100,51 +101,53 @@
 
     <!-- .image -->
 
-
     <section class="hero">
         <div class="hero-body">
 
             <div class="columns">
                 <div class="column" style="max-width: 400px;">
-                    
-                        <h1 class="title is-5 has-text-centered">Bring old memories to life</h1>
-                    
+
+                    <h1 class="title is-5 has-text-centered">Bring old memories to life</h1>
+
                     <figure class="image box">
                         <div id="juxtapose-wrapper" class="juxtapose" data-startingposition="80%"
-                            data-showlabels="false" data-showcredits="false" data-animate="false" data-mode="vertical">
+                            data-showlabels="false" data-showcredits="false" data-animate="true" data-mode="vertical">
                             <img id="mainImage" src="images/lady-after.jpg">
                             <img id="mainImage-bw" src="images/lady-before.jpg">
                         </div>
                         <img id="takenImage" src="">
+                        <!-- <button class="button is-pulled-right">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </span>
+                        </button> -->
                     </figure>
-                    <div class="has-text-centered">
-                        <button id="shareButton" class="button is-hidden is-fullwidth is-outlined" onclick="share()">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-share-alt"></i>
-                            </span>
-                            <span>Share</span>
-                        </button>
-                        <a id="downloadButton" class="button is-hidden is-fullwidth is-outlined" href=""
-                            download="MemoriesinColor">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-download"></i>
-                            </span>
-                            <span>Download</span>
-                        </a>
-
-                        <label id="choose-file-button-label" class="button is-fullwidth " for="choosefilebutton">
+                    <div class="buttons has-text-centered">
+                        <label id="choose-file-button-label" class="button is-fullwidth is-rounded"
+                            for="choosefilebutton">
                             <span class="icon">
                                 <i class="fas fa-lg fa-camera"></i>
                             </span>
                             <span>Camera</span>
                         </label>
                         <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
+                        <a id="downloadButton" class="button is-hidden is-fullwidth is- is-rounded" href=""
+                            download="MemoriesinColor">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-download"></i>
+                            </span>
+                            <span>Download</span>
+                        </a>
+                        <button id="shareButton" class="button is-hidden is-fullwidth is-outlined is-rounded"
+                            onclick="share()">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-share-alt"></i>
+                            </span>
+                            <span>Share</span>
+                        </button>
                     </div>
-                    <div class="container">
-                        <div class="has-text-centered">
-                            <br>
-                            <h2 class="subtitle is-6">Use ‘Camera’ to take a photo and wait for the magic</h2>
-                        </div>
+                    <div class="has-text-centered">
+                        <h2 class="subtitle is-6">Use ‘Camera’ to take a photo and wait for the magic</h2>
                     </div>
                 </div>
             </div>
@@ -153,7 +156,7 @@
     <!-- ./image -->
 
     <!-- the javascript is down here because it needs to wait for the DOM to be ready. Otherwise I could add a dom.onload type thing and put it in the head -->
-    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+    <script src="node_modules/juxtaposejs/build/js/juxtapose.js"></script>
 
 </body>
 
