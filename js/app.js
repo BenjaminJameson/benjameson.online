@@ -3,14 +3,15 @@ window.onload = function () {
   const chooseFileButton = document.getElementById("choosefilebutton");
   chooseFileButton.addEventListener("change", updateImageDisplay);
   let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-  juxtaposeLogo.remove();
+  juxtaposeLogo.classList.add("is-hidden");
 }
 
 
 async function updateImageDisplay() {
+  document.getElementById("takenImage").classList.remove("is-hidden");
+  document.getElementById("shareButton").classList.add("is-hidden");
+  document.getElementById("downloadButton").classList.add("is-hidden");
 
-  // hide upload button
-  // ****document.getElementById("choose-file-button-label").style = "display:none";
   // upload and show the image
   let input = document.getElementById("choosefilebutton");
   let imagefile = input.files[0];
@@ -25,19 +26,18 @@ async function updateImageDisplay() {
     document.getElementById("juxtapose-wrapper").classList.add("is-hidden");
     // document.getElementById("mainImage").src = base64data;
     document.getElementById("takenImage").src = base64data;
-    console.log("success");
     // run the AI exciting :)
     deepai.setApiKey('a8c40b67-9573-41d9-91f7-468eae5807fc');
     (async function () {
       var resp = await deepai.callStandardApi("colorizer", {
         image: document.getElementById("choosefilebutton"),
       });
-      console.log(resp["output_url"]);
 
       let juxtaposeWrapper = document.getElementById("juxtapose-wrapper");
       juxtaposeWrapper.getElementsByTagName("IMG")[0].src = resp["output_url"];
       juxtaposeWrapper.getElementsByTagName("IMG")[1].src = resp["output_url"];
       juxtaposeWrapper.getElementsByTagName("IMG")[1].style.filter = "grayscale(100%)";
+
 
       juxtaposeWrapper.getElementsByTagName("IMG")[1].onload = function () {
         let falseSlider0 = document.getElementsByClassName("jx-slider vertical")[0];
@@ -47,19 +47,16 @@ async function updateImageDisplay() {
         document.getElementById("shareButton").classList.remove("is-hidden");
         document.getElementById("downloadButton").classList.remove("is-hidden");
         document.getElementById("choose-file-button-label").classList.remove("is-loading");
-        let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-        juxtaposeLogo.onload = function () {
-          let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-          juxtaposeLogo.remove();
-        }
       }
+
+      let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
+      juxtaposeLogo.classList.add("is-hidden");
 
       // download
       const base64url = await juxtaposeWrapper.getElementsByTagName("IMG")[0].src;
       const blob = await (await fetch(base64url)).blob();
       const blobUrl = URL.createObjectURL(blob);
       document.getElementById("downloadButton").href = blobUrl;
-
     })()
   }
 }
