@@ -1,7 +1,7 @@
-/* juxtapose - v1.1.6 - 2015-09-09
- * Copyright (c) 2015 Alex Duner and Northwestern University Knight Lab 
+/* juxtapose - v1.2.2 - 2020-09-03
+ * Copyright (c) 2020 Alex Duner and Northwestern University Knight Lab
  */
-div.juxtapose {
+ div.juxtapose {
 	width: 100%;
 	font-family: Helvetica, Arial, sans-serif;
 }
@@ -12,7 +12,9 @@ div.jx-slider {
 	position: relative;
 	overflow: hidden;
 	cursor: pointer;
+	color: #f3f3f3;
 }
+
 
 div.jx-handle {
 	position: absolute;
@@ -22,7 +24,6 @@ div.jx-handle {
 	z-index: 15;
 	margin-left: -20px;
 }
-
 
 .vertical div.jx-handle {
 	height: 40px;
@@ -37,13 +38,13 @@ div.jx-control {
 	margin-right: auto;
 	margin-left: auto;
 	width: 3px;
-	background-color: white;
+	background-color: currentColor;
 }
 
 .vertical div.jx-control {
 	height: 3px;
 	width: 100%;
-	background-color: white;
+	background-color: currentColor;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -57,7 +58,7 @@ div.jx-controller {
 	height: 60px;
 	width: 9px;
 	margin-left: -3px;
-	background-color: white;
+	background-color: currentColor;
 }
 
 .vertical div.jx-controller {
@@ -73,7 +74,7 @@ div.jx-arrow {
 	position: absolute;
 	margin: auto;
 	top: 0;
-	bottom: 0; 
+	bottom: 0;
 	width: 0;
 	height: 0;
 	transition: all .2s ease;
@@ -83,7 +84,7 @@ div.jx-arrow {
 	position: absolute;
 	margin: 0 auto;
 	left: 0;
-	right: 0; 
+	right: 0;
 	width: 0;
 	height: 0;
 	transition: all .2s ease;
@@ -94,14 +95,14 @@ div.jx-arrow.jx-left {
 	left: 2px;
 	border-style: solid;
 	border-width: 8px 8px 8px 0;
-	border-color: transparent #FFF transparent transparent;
+	border-color: transparent currentColor transparent transparent;
 }
 
 div.jx-arrow.jx-right {
 	right: 2px;
 	border-style: solid;
 	border-width: 8px 0 8px 8px;
-	border-color: transparent transparent transparent #FFF;
+	border-color: transparent transparent transparent currentColor;
 }
 
 .vertical div.jx-arrow.jx-left {
@@ -109,16 +110,16 @@ div.jx-arrow.jx-right {
 	top: 2px;
 	border-style: solid;
 	border-width: 0px 8px 8px 8px;
-	border-color: transparent transparent #FFF transparent;
+	border-color: transparent transparent currentColor transparent;
 }
 
 .vertical div.jx-arrow.jx-right {
 	right: 0px;
-	top: initial;
+	top: auto;
 	bottom: 2px;
 	border-style: solid;
 	border-width: 8px 8px 0 8px;
-	border-color: #FFF transparent transparent transparent;
+	border-color: currentColor transparent transparent transparent;
 }
 
 div.jx-handle:hover div.jx-arrow.jx-left,
@@ -126,7 +127,7 @@ div.jx-handle:active div.jx-arrow.jx-left {
 	left: -1px;
 }
 
-div.jx-handle:hover div.jx-arrow.jx-right, 
+div.jx-handle:hover div.jx-arrow.jx-right,
 div.jx-handle:active div.jx-arrow.jx-right {
 	right: -1px;
 }
@@ -137,7 +138,7 @@ div.jx-handle:active div.jx-arrow.jx-right {
 	top: 0px;
 }
 
-.vertical div.jx-handle:hover div.jx-arrow.jx-right, 
+.vertical div.jx-handle:hover div.jx-arrow.jx-right,
 .vertical div.jx-handle:active div.jx-arrow.jx-right {
 	right: 0px;
 	bottom: 0px;
@@ -156,13 +157,15 @@ div.jx-image {
 .vertical div.jx-image {
 	width: 100%;
 	left: 0;
-	top: initial;
+	top: auto;
 }
 
 div.jx-image img {
 	height: 100%;
+	width: auto;
 	z-index: 5;
 	position: absolute;
+	margin-bottom: 0;
 
 	max-height: none;
 	max-width: none;
@@ -171,7 +174,7 @@ div.jx-image img {
 }
 
 .vertical div.jx-image img {
-	height: initial;
+	height: auto;
 	width: 100%;
 }
 
@@ -247,7 +250,7 @@ div.jx-image.jx-right div.jx-label {
 .vertical div.jx-image.jx-right div.jx-label {
 	left: 0;
 	bottom: 0;
-	top: initial;
+	top: auto;
 }
 
 div.jx-credit {
@@ -309,8 +312,8 @@ a.jx-knightlab div.knightlab-logo {
 }
 
 a.jx-knightlab:hover {
-	background-color: #000; /* IE 8 */
-	background-color: rgba(0,0,0,.35);
+	background-color: #000; IE 8
+	/* background-color: rgba(0,0,0,.35); */
 }
 a.jx-knightlab:hover div.knightlab-logo {
 	/* background-color: #ce4d28; */
@@ -325,8 +328,9 @@ a.jx-knightlab span.juxtapose-name {
 	color: white;
 	font-size: 10px;
 	padding-left: 0.375em;
-  	vertical-align: middle;
-  	line-height: normal; */
+	vertical-align: middle;
+	line-height: normal;
+	text-shadow: none; */
 }
 
 /* keyboard accessibility */
@@ -334,10 +338,10 @@ div.jx-controller:focus,
 div.jx-image.jx-left div.jx-label:focus,
 div.jx-image.jx-right div.jx-label:focus,
 a.jx-knightlab:focus {
-	background: #eae34a;
-	color: #000;
+	/* background: #eae34a;
+	color: #000; */
 }
 a.jx-knightlab:focus span.juxtapose-name{
-	color: #000;
-	border: none;
+	/* color: #000;
+	border: none; */
 }
