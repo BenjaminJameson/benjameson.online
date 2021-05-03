@@ -169,12 +169,16 @@
   }
 
   function getPageX(e) {
+    
     var pageX;
     if (e.pageX) {
       pageX = e.pageX;
     }
     else if (e.touches) {
-    //   pageX = e.touches[0].pageX;
+      // bj wrote this line, to make the image scroll on mobile without the slider jumping
+      if (e.target.tagName != "IMG"){
+        pageX = e.touches[0].pageX;
+      }
     }
     else {
       pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
