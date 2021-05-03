@@ -4,95 +4,152 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Memories in Color</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="styles/debug.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="css/debug.css"> -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script defer="" src="js/app.js"></script>
+    <script defer="" src="https://cdnjs.deepai.org/deepai.min.js"></script>
+    <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 </head>
 
-<body>
+<style>
+    @keyframes greyscale-fade-in {
+        from {
+            filter: grayscale(100%);
+        }
 
-    <!-- hero -->
+        to {
+            filter: grayscale(0%);
+        }
+    }
+
+    /* #mainImage {
+        animation-name: greyscale-fade-in;
+        animation-duration: 4s;
+    } */
+</style>
+
+<body>
+    <!-- .navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://memoriesincolor.com">
+                <img src="images/logo.png">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    Documentation
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item">
+                            Jobs
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- ./navbar -->
+
+    <!-- .image -->
+
+
     <section class="hero">
         <div class="hero-body">
-            <div class="container level">
-                <figure class="image level-item">
-                    <!-- <img style="max-width: 150px;" src="images/johnny-rezende-portoflio-dante-3232.gif"> -->
-                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jwzeswfk.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-                </figure>
-            </div>
-        </div>
-    </section>
-    <!-- /hero -->
 
-    <!-- notifications -->
-    <section class="section has-background-light">
-        <div class="container">
             <div class="columns">
-                <div class="column">
-                    <article class="media notification is-primary">
-                        <figure class="media-left">
-                            <span class="icon is-medium">
-                                <i class="fas fa-lg fa-chess-pawn"></i>
-                            </span>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <h1 class="title is-size-4">Hello...
-                                </h1>
-                                <p class="is-size-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-                                    maiores sed enim
-                                    autem voluptas, ea eveniet neque aut nisi consectetur.
-                                </p>
-                            </div>
+                <div class="column" style="max-width: 400px;">
+                    <div class="has-text-centered">
+                        <h1 class="title is-4">Bring old pictures to life</h1>
+                        <h2 class="subtitle is-6">Use ‘Camera’ to take a photo and wait for the magic</h2>
+                    </div>
+                    <figure class="image">
+                        <div id="juxtapose-wrapper" class="juxtapose" data-startingposition="50%"
+                            data-showlabels="false" data-showcredits="false" data-animate="false" data-mode="vertical">
+                            <img id="mainImage" src="images/lady-after.jpg">
+                            <img id="mainImage-bw" src="images/lady-before.jpg">
                         </div>
-                    </article>
-                </div>
-                <div class="column">
-                    <article class="media notification is-warning">
-                        <figure class="media-left">
-                            <span class="icon is-medium">
-                                <i class="fab fa-lg fa-galactic-senate"></i>
+                        <img id="takenImage" src="">
+                    </figure>
+                    <div class="has-text-centered">
+                        <button id="shareButton" class="button is-hidden is-fullwidth is-outlined" onclick="share()">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-share-alt"></i>
                             </span>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <h1 class="title is-size-4">Hi...</h1>
-                                <p class="is-size-5">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos maiores sed enim
-                                    autem
-                                    voluptas, ea eveniet
-                                    neque aut nisi consectetur.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="column">
-                    <article class="media notification is-link">
-                        <figure class="media-left">
-                            <span class="icon is-medium">
-                                <i class="fab fa-lg fa-alipay"></i>
+                            <span>Share</span>
+                        </button>
+                        <a id="downloadButton" class="button is-hidden is-fullwidth is-outlined" href=""
+                            download="MemoriesinColor">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-download"></i>
                             </span>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <h1 class="title is-size-4">Hey...</h1>
-                                <p class="is-size-5">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos maiores sed enim
-                                    autem
-                                    voluptas, ea eveniet
-                                    neque aut nisi consectetur.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
+                            <span>Download</span>
+                        </a>
+
+                        <label id="choose-file-button-label" class="button is-fullwidth is-outlined"
+                            for="choosefilebutton">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-camera"></i>
+                            </span>
+                            <span>Camera</span>
+                        </label>
+                        <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- /notifications -->
+    <!-- ./image -->
+
+    <!-- the javascript is down here because it needs to wait for the DOM to be ready. Otherwise I could add a dom.onload type thing and put it in the head -->
+    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 
 </body>
 
