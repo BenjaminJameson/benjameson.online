@@ -21,7 +21,7 @@
     this.image = new Image();
 
     this.loaded = false;
-    this.image.onload = function() {
+    this.image.onload = function () {
       self.loaded = true;
       slider._onLoaded();
     };
@@ -36,7 +36,7 @@
     this.image = new Image();
 
     this.loaded = false;
-    this.image.onload = function() {
+    this.image.onload = function () {
       self.loaded = true;
       slider._onLoaded();
     };
@@ -49,7 +49,7 @@
   }
 
   FlickrGraphic.prototype = {
-    getFlickrID: function(url) {
+    getFlickrID: function (url) {
       var idx = url.indexOf("flickr.com/photos/");
       var pos = idx + "flickr.com/photos/".length;
       var photo_info = url.substr(pos);
@@ -59,15 +59,15 @@
       return id;
     },
 
-    callFlickrAPI: function(id, self) {
+    callFlickrAPI: function (id, self) {
       var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes' +
-          '&api_key=' + flickr_key +
-          '&photo_id=' + id + '&format=json&nojsoncallback=1';
+        '&api_key=' + flickr_key +
+        '&photo_id=' + id + '&format=json&nojsoncallback=1';
 
       var request = new XMLHttpRequest();
       request.open('GET', url, true);
-      request.onload = function() {
-        if (request.status >= 200 && request.status < 400){
+      request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
           data = JSON.parse(request.responseText);
           var flickr_url = self.bestFlickrUrl(data.sizes.size);
           self.setFlickrImage(flickr_url);
@@ -75,17 +75,17 @@
           console.error("There was an error getting the picture from Flickr");
         }
       };
-      request.onerror = function() {
+      request.onerror = function () {
         console.error("There was an error getting the picture from Flickr");
       };
       request.send();
     },
 
-    setFlickrImage: function(src) {
+    setFlickrImage: function (src) {
       this.image.src = src;
     },
 
-    bestFlickrUrl: function(ary) {
+    bestFlickrUrl: function (ary) {
       var dict = {};
       for (var i = 0; i < ary.length; i++) {
         dict[ary[i].label] = ary[i].source;
@@ -101,19 +101,19 @@
 
   function getNaturalDimensions(DOMelement) {
     if (DOMelement.naturalWidth && DOMelement.naturalHeight) {
-      return {width: DOMelement.naturalWidth, height: DOMelement.naturalHeight};
+      return { width: DOMelement.naturalWidth, height: DOMelement.naturalHeight };
     }
     // http://www.jacklmoore.com/notes/naturalwidth-and-naturalheight-in-ie/
     var img = new Image();
     img.src = DOMelement.src;
-    return {width: img.width, height: img.height};
+    return { width: img.width, height: img.height };
   }
 
   function getImageDimensions(img) {
     var dimensions = {
       width: getNaturalDimensions(img).width,
       height: getNaturalDimensions(img).height,
-      aspect: function() { return (this.width / this.height); }
+      aspect: function () { return (this.width / this.height); }
     };
     return dimensions;
   }
@@ -161,20 +161,22 @@
 
   function viewport() {
     var e = window, a = 'inner';
-    if ( !( 'innerWidth' in window ) ) {
+    if (!('innerWidth' in window)) {
       a = 'client';
       e = document.documentElement || document.body;
     }
-    return { width : e[ a+'Width' ] , height : e[ a+'Height' ] }
+    return { width: e[a + 'Width'], height: e[a + 'Height'] }
   }
 
   function getPageX(e) {
     var pageX;
     if (e.pageX) {
       pageX = e.pageX;
-    } else if (e.touches) {
-      pageX = e.touches[0].pageX;
-    } else {
+    }
+    else if (e.touches) {
+    //   pageX = e.touches[0].pageX;
+    }
+    else {
       pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
     }
     return pageX;
@@ -202,7 +204,7 @@
   }
 
   function getLeftPercent(slider, input) {
-    if (typeof(input) === "string" || typeof(input) === "number") {
+    if (typeof (input) === "string" || typeof (input) === "number") {
       leftPercent = parseInt(input, 10);
     } else {
       var sliderRect = slider.getBoundingClientRect();
@@ -219,7 +221,7 @@
   }
 
   function getTopPercent(slider, input) {
-    if (typeof(input) === "string" || typeof(input) === "number") {
+    if (typeof (input) === "string" || typeof (input) === "number") {
       topPercent = parseInt(input, 10);
     } else {
       var sliderRect = slider.getBoundingClientRect();
@@ -232,19 +234,19 @@
       var relativeY = pageY - offset.top;
       topPercent = (relativeY / width) * 100;
 
-//       console.log("sliderRect", sliderRect);
-//       console.log("pageY", pageY)
-//       console.log("relativeY", relativeY)
-// ;     console.log("topPercent", topPercent);
+      //       console.log("sliderRect", sliderRect);
+      //       console.log("pageY", pageY)
+      //       console.log("relativeY", relativeY)
+      // ;     console.log("topPercent", topPercent);
 
     }
     return topPercent;
   }
 
   // values of BOOLEAN_OPTIONS are ignored. just used for 'in' test on keys
-  var BOOLEAN_OPTIONS =  {'animate': true, 'showLabels': true, 'showCredits': true, 'makeResponsive': true };
+  var BOOLEAN_OPTIONS = { 'animate': true, 'showLabels': true, 'showCredits': true, 'makeResponsive': true };
   function interpret_boolean(x) {
-    if (typeof(x) != 'string') {
+    if (typeof (x) != 'string') {
       return Boolean(x);
     }
     return !(x === 'false' || x === '');
@@ -266,7 +268,7 @@
     };
 
     for (i in this.options) {
-      if(i in options) {
+      if (i in options) {
         if (i in BOOLEAN_OPTIONS) {
           this.options[i] = interpret_boolean(options[i]);
         } else {
@@ -277,13 +279,13 @@
 
     if (images.length == 2) {
 
-      if(checkFlickr(images[0].src)) {
+      if (checkFlickr(images[0].src)) {
         this.imgBefore = new FlickrGraphic(images[0], this);
       } else {
         this.imgBefore = new Graphic(images[0], this);
       }
 
-      if(checkFlickr(images[1].src)) {
+      if (checkFlickr(images[1].src)) {
         this.imgAfter = new FlickrGraphic(images[1], this);
       } else {
         this.imgAfter = new Graphic(images[1], this);
@@ -302,7 +304,7 @@
 
   JXSlider.prototype = {
 
-    updateSlider: function(input, animate) {
+    updateSlider: function (input, animate) {
       var leftPercent, rightPercent;
 
       if (this.options.mode === "vertical") {
@@ -339,11 +341,11 @@
       }
     },
 
-    getPosition: function() {
+    getPosition: function () {
       return this.sliderPosition;
     },
 
-    displayLabel: function(element, labelText) {
+    displayLabel: function (element, labelText) {
       label = document.createElement("div");
       label.className = 'jx-label';
       label.setAttribute('tabindex', 0); //put the controller in the natural tab order of the document
@@ -352,7 +354,7 @@
       element.appendChild(label);
     },
 
-    displayCredits: function() {
+    displayCredits: function () {
       credit = document.createElement("div");
       credit.className = "jx-credit";
 
@@ -365,11 +367,11 @@
       this.wrapper.appendChild(credit);
     },
 
-    setStartingPosition: function(s) {
+    setStartingPosition: function (s) {
       this.options.startingPosition = s;
     },
 
-    checkImages: function() {
+    checkImages: function () {
       if (getImageDimensions(this.imgBefore.image).aspect() ==
         getImageDimensions(this.imgAfter.image).aspect()) {
         return true;
@@ -377,7 +379,7 @@
         return false;
       }
     },
-    calculateDims: function(width, height){
+    calculateDims: function (width, height) {
       var ratio = getImageDimensions(this.imgBefore.image).aspect();
       if (width) {
         height = width / ratio;
@@ -390,11 +392,11 @@
         ratio: ratio
       }
     },
-    responsivizeIframe: function(dims){
+    responsivizeIframe: function (dims) {
       //Check the slider dimensions against the iframe (window) dimensions
-      if (dims.height < window.innerHeight){
+      if (dims.height < window.innerHeight) {
         //If the aspect ratio is greater than 1, imgs are landscape, so letterbox top and bottom
-        if (dims.ratio >= 1){
+        if (dims.ratio >= 1) {
           this.wrapper.style.paddingTop = parseInt((window.innerHeight - dims.height) / 2) + "px";
         }
       } else if (dims.height > window.innerHeight) {
@@ -409,7 +411,7 @@
       }
       return dims;
     },
-    setWrapperDimensions: function() {
+    setWrapperDimensions: function () {
       var wrapperWidth = getComputedWidthAndHeight(this.wrapper).width;
       var wrapperHeight = getComputedWidthAndHeight(this.wrapper).height;
       var dims = this.calculateDims(wrapperWidth, wrapperHeight);
@@ -421,7 +423,7 @@
       this.wrapper.style.width = parseInt(dims.width) + "px";
     },
 
-    optimizeWrapper: function(maxWidth){
+    optimizeWrapper: function (maxWidth) {
       var result = juxtapose.OPTIMIZATION_ACCEPTED;
       if ((this.imgBefore.image.naturalWidth >= maxWidth) && (this.imgAfter.image.naturalWidth >= maxWidth)) {
         this.wrapper.style.width = maxWidth + "px";
@@ -434,7 +436,7 @@
       this.setWrapperDimensions();
       return result;
     },
-    _onLoaded: function() {
+    _onLoaded: function () {
 
       if (this.imgBefore && this.imgBefore.loaded === true &&
         this.imgAfter && this.imgAfter.loaded === true) {
@@ -507,7 +509,7 @@
       }
     },
 
-    _init: function() {
+    _init: function () {
 
       if (this.checkImages() === false) {
         console.warn(this, "Check that the two images have the same aspect ratio for the slider to work correctly.");
@@ -525,38 +527,38 @@
       }
 
       var self = this;
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         self.setWrapperDimensions();
       });
 
-      this.slider.addEventListener("mousedown", function(e) {
+      this.slider.addEventListener("mousedown", function (e) {
         e = e || window.event;
         e.preventDefault();
         self.updateSlider(e, true);
         animate = true;
 
-        this.addEventListener("mousemove", function(e) {
+        this.addEventListener("mousemove", function (e) {
           e = e || window.event;
           e.preventDefault();
           if (animate) { self.updateSlider(e, false); }
         });
 
-        document.addEventListener('mouseup', function(e) {
+        document.addEventListener('mouseup', function (e) {
           e = e || window.event;
           e.preventDefault();
           animate = false;
         });
       });
 
-      this.slider.addEventListener("touchstart", function(e) {
+      this.slider.addEventListener("touchstart", function (e) {
         e = e || window.event;
-        e.preventDefault();
+        // e.preventDefault();
         e.stopPropagation();
         self.updateSlider(e, true);
 
-        this.addEventListener("touchmove", function(e) {
+        this.addEventListener("touchmove", function (e) {
           e = e || window.event;
-          e.preventDefault();
+          // e.preventDefault();
           e.stopPropagation();
           self.updateSlider(event, false);
         });
@@ -570,44 +572,44 @@
         var key = event.which || event.keyCode;
         var ariaValue = parseFloat(this.style.left);
 
-          //move jx-controller left
-          if (key == 37) {
-            ariaValue = ariaValue - 1;
+        //move jx-controller left
+        if (key == 37) {
+          ariaValue = ariaValue - 1;
           var leftStart = parseFloat(this.style.left) - 1;
           self.updateSlider(leftStart, false);
           self.controller.setAttribute('aria-valuenow', ariaValue);
-          }
+        }
 
-          //move jx-controller right
-          if (key == 39) {
-            ariaValue = ariaValue + 1;
+        //move jx-controller right
+        if (key == 39) {
+          ariaValue = ariaValue + 1;
           var rightStart = parseFloat(this.style.left) + 1;
           self.updateSlider(rightStart, false);
           self.controller.setAttribute('aria-valuenow', ariaValue);
-          }
+        }
       });
 
       //toggle right-hand image visibility
       this.leftImage.addEventListener("keydown", function (event) {
-           var key = event.which || event.keyCode;
-            if ((key == 13) || (key ==32)) {
-              self.updateSlider("90%", true);
-                self.controller.setAttribute('aria-valuenow', 90);
-            }
+        var key = event.which || event.keyCode;
+        if ((key == 13) || (key == 32)) {
+          self.updateSlider("90%", true);
+          self.controller.setAttribute('aria-valuenow', 90);
+        }
       });
 
       //toggle left-hand image visibility
       this.rightImage.addEventListener("keydown", function (event) {
-           var key = event.which || event.keyCode;
-            if ((key == 13) || (key ==32)) {
-            self.updateSlider("10%", true);
-            self.controller.setAttribute('aria-valuenow', 10);
-            }
+        var key = event.which || event.keyCode;
+        if ((key == 13) || (key == 32)) {
+          self.updateSlider("10%", true);
+          self.controller.setAttribute('aria-valuenow', 10);
+        }
       });
 
       juxtapose.sliders.push(this);
 
-      if (this.options.callback && typeof(this.options.callback) == 'function') {
+      if (this.options.callback && typeof (this.options.callback) == 'function') {
         this.options.callback(this);
       }
     }
@@ -677,9 +679,9 @@
   };
 
   //Enable HTML Implementation
-  juxtapose.scanPage = function() {
-      var elements = document.querySelectorAll('.juxtapose');
-      for (var i = 0; i < elements.length; i++) {
+  juxtapose.scanPage = function () {
+    var elements = document.querySelectorAll('.juxtapose');
+    for (var i = 0; i < elements.length; i++) {
       juxtapose.makeSlider(elements[i], i);
     }
   };
@@ -693,32 +695,32 @@
 
 
 // addEventListener polyfill 1.0 / Eirik Backer / MIT Licence
-(function(win, doc){
-  if(win.addEventListener)return;   //No need to polyfill
+(function (win, doc) {
+  if (win.addEventListener) return;   //No need to polyfill
 
-  function docHijack(p){var old = doc[p];doc[p] = function(v){return addListen(old(v));};}
-  function addEvent(on, fn, self){
-    return (self = this).attachEvent('on' + on, function(e) {
+  function docHijack(p) { var old = doc[p]; doc[p] = function (v) { return addListen(old(v)); }; }
+  function addEvent(on, fn, self) {
+    return (self = this).attachEvent('on' + on, function (e) {
       var e = e || win.event;
-      e.preventDefault  = e.preventDefault  || function(){e.returnValue = false;};
-      e.stopPropagation = e.stopPropagation || function(){e.cancelBubble = true;};
+      e.preventDefault = e.preventDefault || function () { e.returnValue = false; };
+      e.stopPropagation = e.stopPropagation || function () { e.cancelBubble = true; };
       fn.call(self, e);
     });
   }
-  function addListen(obj, i){
-    if(i = obj.length)while(i--)obj[i].addEventListener = addEvent;
+  function addListen(obj, i) {
+    if (i = obj.length) while (i--) obj[i].addEventListener = addEvent;
     else obj.addEventListener = addEvent;
     return obj;
   }
 
   addListen([doc, win]);
-  if('Element' in win)win.Element.prototype.addEventListener = addEvent;      //IE8
-  else{                                     //IE < 8
-    doc.attachEvent('onreadystatechange', function(){addListen(doc.all);});   //Make sure we also init at domReady
+  if ('Element' in win) win.Element.prototype.addEventListener = addEvent;      //IE8
+  else {                                     //IE < 8
+    doc.attachEvent('onreadystatechange', function () { addListen(doc.all); });   //Make sure we also init at domReady
     docHijack('getElementsByTagName');
     docHijack('getElementById');
     docHijack('createElement');
-    addListen(doc.all); 
+    addListen(doc.all);
   }
 })(window, document);
 
