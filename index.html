@@ -100,7 +100,6 @@
     <!-- ./navbar -->
 
     <!-- .image -->
-
     <section class="hero">
         <div class="hero-body">
 
@@ -115,13 +114,33 @@
                         </div>
                         <div id="newSlider" class=""></div>
                         <img id="takenImage" src="">
-                        <!-- <button class="button is-pulled-right">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </span>
-                        </button> -->
+                        <div id="dropdown" class="dropdown is-hidden is-up is-right is-pulled-right">
+                            <div class="dropdown-trigger">
+                                <button class="button" onclick="toggleDropdown()" aria-haspopup="true" aria-controls="dropdown-menu3">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                                <div class="dropdown-content">
+                                    <a href="#" class="dropdown-item is-right" onclick="share()">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-share-alt" aria-hidden="true"></i>
+                                        </span>
+                                        <span>Share</span>
+                                    </a>
+                                    <a id="downloadButton" href="#" class="dropdown-item" download="MemoriesinColor">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-download" aria-hidden="true"></i>
+                                        </span>
+                                        <span>Download</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </figure>
-                    <div class="buttons has-text-centered">
+                    <div class="buttons">
                         <label id="choose-file-button-label" class="button is-fullwidth is-rounded"
                             for="choosefilebutton">
                             <span class="icon">
@@ -130,7 +149,7 @@
                             <span>Camera</span>
                         </label>
                         <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
-                        <a id="downloadButton" class="button is-hidden is-fullwidth is- is-rounded" href=""
+                        <!-- <a id="downloadButton" class="button is-hidden is-fullwidth is- is-rounded" href=""
                             download="MemoriesinColor">
                             <span class="icon">
                                 <i class="fas fa-lg fa-download"></i>
@@ -143,7 +162,7 @@
                                 <i class="fas fa-lg fa-share-alt"></i>
                             </span>
                             <span>Share</span>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="has-text-centered">
                         <h1 class="title is-5 has-text-centered">Bring old memories to life</h1>

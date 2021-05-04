@@ -7,8 +7,7 @@ window.onload = function () {
 
 async function updateImageDisplay() {
   document.getElementById("takenImage").classList.remove("is-hidden");
-  document.getElementById("shareButton").classList.add("is-hidden");
-  document.getElementById("downloadButton").classList.add("is-hidden");
+  document.getElementById("dropdown").classList.add("is-hidden");
 
   // upload and show the image
   let input = document.getElementById("choosefilebutton");
@@ -56,15 +55,8 @@ async function updateImageDisplay() {
       newSlider.addEventListener("DOMNodeInserted", function () {
         newSlider.classList.remove("is-hidden");
         document.getElementById("takenImage").classList.add("is-hidden");
-        document.getElementById("shareButton").classList.remove("is-hidden");
-        document.getElementById("downloadButton").classList.remove("is-hidden");
+        document.getElementById("dropdown").classList.remove("is-hidden");
         document.getElementById("choose-file-button-label").classList.remove("is-loading");
-        // let secondImg = newSlider.getElementsByTagName("IMG")[1];
-        // if (typeof secondImg !== 'undefined') {
-        //   console.log("true");
-        //   newSlider.getElementsByTagName("IMG")[1].style.filter = "greyscale(100%)";
-        // }
-
       });
 
 
@@ -121,3 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+async function toggleDropdown(){
+  let dropdownButton = document.getElementById("dropdown");
+  dropdownButton.classList.toggle("is-active");
+}
