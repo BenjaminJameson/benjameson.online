@@ -2,8 +2,6 @@
 window.onload = function () {
   const chooseFileButton = document.getElementById("choosefilebutton");
   chooseFileButton.addEventListener("change", updateImageDisplay);
-  // let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-  // juxtaposeLogo.classList.add("is-hidden");
 }
 
 
@@ -33,27 +31,46 @@ async function updateImageDisplay() {
         image: document.getElementById("choosefilebutton"),
       });
 
-      let juxtaposeWrapper = document.getElementById("juxtapose-wrapper");
-      juxtaposeWrapper.getElementsByTagName("IMG")[0].src = resp["output_url"];
-      juxtaposeWrapper.getElementsByTagName("IMG")[1].src = resp["output_url"];
-      juxtaposeWrapper.getElementsByTagName("IMG")[1].style.filter = "grayscale(100%)";
+      slider = new juxtapose.JXSlider('#newSlider',
+        [
+          {
+            src: resp["output_url"],
+            // label: '2009',
+            // credit: 'Image Credit'
+          },
+          {
+            src: resp["output_url"],
+            // label: '2014',
+            // credit: "Image Credit"
+          }
+        ],
+        {
+          animate: false,
+          showLabels: false,
+          showCredits: false,
+          startingPosition: "90%",
+          makeResponsive: true
+        });
 
-
-      juxtaposeWrapper.getElementsByTagName("IMG")[1].onload = function () {
-        let falseSlider0 = document.getElementsByClassName("jx-slider vertical")[0];
-        falseSlider0.remove();
-        document.getElementById("juxtapose-wrapper").classList.remove("is-hidden");
+      let newSlider = document.getElementById("newSlider");
+      newSlider.addEventListener("DOMNodeInserted", function () {
+        newSlider.classList.remove("is-hidden");
         document.getElementById("takenImage").classList.add("is-hidden");
         document.getElementById("shareButton").classList.remove("is-hidden");
         document.getElementById("downloadButton").classList.remove("is-hidden");
         document.getElementById("choose-file-button-label").classList.remove("is-loading");
-      }
+        // let secondImg = newSlider.getElementsByTagName("IMG")[1];
+        // if (typeof secondImg !== 'undefined') {
+        //   console.log("true");
+        //   newSlider.getElementsByTagName("IMG")[1].style.filter = "greyscale(100%)";
+        // }
 
-      let juxtaposeLogo = document.getElementsByClassName("jx-knightlab")[0];
-      juxtaposeLogo.classList.add("is-hidden");
+      });
+
+
 
       // download
-      const base64url = await juxtaposeWrapper.getElementsByTagName("IMG")[0].src;
+      const base64url = await resp["output_url"];
       const blob = await (await fetch(base64url)).blob();
       const blobUrl = URL.createObjectURL(blob);
       document.getElementById("downloadButton").href = blobUrl;
@@ -63,8 +80,8 @@ async function updateImageDisplay() {
 
 // share
 async function share() {
-  let juxtaposeWrapper = document.getElementById("juxtapose-wrapper");
-  const base64url = juxtaposeWrapper.getElementsByTagName("IMG")[0].src;
+  let newSlider = document.getElementById("newSlider");
+  const base64url = newSlider.getElementsByTagName("IMG")[0].src;
   const blob = await (await fetch(base64url)).blob();
   const file = new File([blob], 'memories_in_color_image.jpeg', { type: blob.type });
 
@@ -103,3 +120,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+

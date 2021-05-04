@@ -195,6 +195,7 @@ div.jx-image.jx-right {
 div.jx-image.jx-right img {
 	right: 0;
 	bottom: 0;
+	filter: grayscale(100%);
 }
 
 
