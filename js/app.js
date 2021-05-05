@@ -9,6 +9,10 @@ async function updateImageDisplay() {
   document.getElementById("takenImage").classList.remove("is-hidden");
   document.getElementById("dropdown").classList.add("is-hidden");
 
+  if (document.getElementById("newSlider")) {
+    document.getElementById("newSlider").remove();
+  }
+
   // encase someone clicks the camera button at bottom of page
   if (window.scrollY > 92) {
     window.scrollTo(0, 55);
@@ -35,6 +39,11 @@ async function updateImageDisplay() {
         image: document.getElementById("choosefilebutton"),
       });
 
+      let newSlider = document.createElement("DIV");
+      newSlider.setAttribute("id", "newSlider");
+      let imageBox = document.getElementById("imageBox");
+      imageBox.appendChild(newSlider);
+
       slider = new juxtapose.JXSlider('#newSlider',
         [
           {
@@ -56,7 +65,7 @@ async function updateImageDisplay() {
           makeResponsive: true
         });
 
-      let newSlider = document.getElementById("newSlider");
+      // let newSlider = document.getElementById("newSlider");
       newSlider.addEventListener("DOMNodeInserted", function () {
         newSlider.classList.remove("is-hidden");
         document.getElementById("takenImage").classList.add("is-hidden");
