@@ -28,10 +28,15 @@
         }
     }
 
-    /* #mainImage {
-        animation-name: greyscale-fade-in;
-        animation-duration: 4s;
-    } */
+    .customTopRight {
+        position: absolute;
+        z-index: 9999999;
+        top: 19px;
+        right: 19px;
+    }
+    .navbar-burger span{
+        height: 0px;
+    }
 </style>
 
 <body>
@@ -41,12 +46,14 @@
             <a class="navbar-item" href="https://memoriesincolor.com">
                 <img src="images/logo.png">
             </a>
-
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
+                <!-- <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span> -->
+                <span aria-hidden="true" class="icon">
+                    <i class="fas fa-bars"></i>
+                </span>
             </a>
         </div>
 
@@ -55,45 +62,12 @@
                 <a class="navbar-item">
                     Home
                 </a>
-
                 <a class="navbar-item">
-                    Documentation
+                    About
                 </a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            About
-                        </a>
-                        <a class="navbar-item">
-                            Jobs
-                        </a>
-                        <a class="navbar-item">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                            Log in
-                        </a>
-                    </div>
-                </div>
+                <a class="navbar-item">
+                    FAQ
+                </a>
             </div>
         </div>
     </nav>
@@ -114,11 +88,13 @@
                         </div>
                         <div id="newSlider" class=""></div>
                         <img id="takenImage" src="">
-                        <div id="dropdown" class="dropdown is-hidden is-up is-right is-pulled-right">
+                        <div id="dropdown" class="customTopRight is-hidden dropdown is-right is-pulled-right">
                             <div class="dropdown-trigger">
-                                <button class="button" onclick="toggleDropdown()" aria-haspopup="true" aria-controls="dropdown-menu3">
-                                    <span class="icon is-small">
-                                        <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                                <button class="button is-ghost has-text-dark" onclick="toggleDropdown()"
+                                    aria-haspopup="true" aria-controls="dropdown-menu3">
+                                    <span class="icon">
+                                        <i class="fas fa-stack-2x fa-circle fa-inverse" aria-hidden="true"></i>
+                                        <i class="fas fa-stack fa-ellipsis-v" aria-hidden="true"></i>
                                     </span>
                                 </button>
                             </div>
@@ -141,7 +117,7 @@
                         </div>
                     </figure>
                     <div class="buttons">
-                        <label id="choose-file-button-label" class="button is-fullwidth is-rounded"
+                        <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
                             for="choosefilebutton">
                             <span class="icon">
                                 <i class="fas fa-lg fa-camera"></i>
@@ -149,20 +125,6 @@
                             <span>Camera</span>
                         </label>
                         <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
-                        <!-- <a id="downloadButton" class="button is-hidden is-fullwidth is- is-rounded" href=""
-                            download="MemoriesinColor">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-download"></i>
-                            </span>
-                            <span>Download</span>
-                        </a>
-                        <button id="shareButton" class="button is-hidden is-fullwidth is-outlined is-rounded"
-                            onclick="share()">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-share-alt"></i>
-                            </span>
-                            <span>Share</span>
-                        </button> -->
                     </div>
                     <div class="has-text-centered">
                         <h1 class="title is-5 has-text-centered">Bring old memories to life</h1>
@@ -174,6 +136,127 @@
     </section>
     <!-- ./image -->
 
+    <!-- about -->
+    <section class="section">
+        <div class="content">
+            <h1 class="title">About</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cum provident, suscipit
+                excepturi cumque ex. Id, quis? Provident incidunt architecto deleniti alias fuga dolore
+                officiis iste consequatur similique ipsa. Velit quas nostrum placeat fuga ex ut quod ab
+                provident veritatis.</p>
+        </div>
+    </section>
+    <!-- /about -->
+
+    <!-- reviews -->
+    <section class="section">
+        <div class="container has-text-centered py-4">
+            <h2 class="title mb-6">What's So Great About Memories in Color?</h2>
+            <div class="columns">
+                <div class="column">
+                    <div class="level">
+                        <div class="level-item">
+                            <figure class="image is-128x128"><img class="is-rounded" src="images/Mask Group (4).png"
+                                    alt=""></figure>
+                        </div>
+                    </div>
+                    <p class="block">It's a really cool network. Like, we had a fight with Richard at one point, and I
+                        think they deleted some of my data, but then they brought it back. Just bro's being bro's.</p>
+                    <h5 class="title is-5">Mary</h5>
+                    <p class="subtitle">Grandmothers Photo</p>
+                </div>
+                <div class="column">
+                    <div class="level">
+                        <div class="level-item">
+                            <figure class="image is-128x128"><img class="is-rounded" src="images/Mask Group (5).png"
+                                    alt=""></figure>
+                        </div>
+                    </div>
+                    <p class="block">This is such a great product that I feel aroused every time I use it. I didn't know
+                        the boys would be able to build, but god damn it, they did it. Kickass!</p>
+                    <h5 class="title is-5">Micaela</h5>
+                    <p class="subtitle">Grandfathers Photo</p>
+                </div>
+                <div class="column">
+                    <div class="level">
+                        <div class="level-item">
+                            <figure class="image is-128x128"><img class="is-rounded" src="images/Mask Group (3).png"
+                                    alt=""></figure>
+                        </div>
+                    </div>
+                    <p class="block">Even though I have been dismantled, I live on as an artificial intelligence on the
+                        PiperNet. I really like it here. Still waiting for Jared to Piper-chat with me sometime.</p>
+                    <h5 class="title is-5">Charles</h5>
+                    <p class="subtitle">Distant Relatives Photo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /reviews -->
+
+    <!-- bottom camera button -->
+    <section class="section" style="max-width: 400px;">
+        <h1 class="title">Try it out</h1>
+        <div class="buttons">
+            <a href="#">
+                <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
+                    for="choosefilebutton">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-camera"></i>
+                    </span>
+                    <span>Camera</span>
+                </label>
+            </a>
+            <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
+        </div>
+    </section>
+
+    <!-- .footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <a class="title is-4" href="#">Memories in Color</a>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <a class="level-item" href="#">Home</a>
+                    <a class="level-item" href="#">About</a>
+                    <a class="level-item" href="#">FAQ</a>
+                </div>
+                <hr>
+                <div class="columns">
+                    <div class="column">
+                        <a class="button is-ghost" href="#">
+                            <span class="icon">
+                                <i class="fab fa-lg fa-instagram"></i>
+                            </span>
+                        </a>
+                        <a class="button is-ghost" href="#">
+                            <span class="icon">
+                                <i class="fab fa-lg fa-facebook"></i>
+                            </span>
+                        </a>
+                        <a class="button is-ghost" href="#">
+                            <span class="icon">
+                                <i class="fab fa-lg fa-twitter"></i>
+                            </span>
+                        </a>
+                        <a class="button is-ghost" href="#">
+                            <span class="icon">
+                                <i class="fab fa-lg fa-tiktok"></i>
+                            </span>
+                        </a>
+                        <!-- <div class="buttons"><a class="button" href="#"><img src="placeholder/icons/twitter.svg" alt=""></a><a class="button" href="#"><img src="placeholder/icons/facebook-f.svg" alt=""></a><a class="button" href="#"><img src="placeholder/icons/instagram.svg" alt=""></a></div> -->
+                    </div>
+                    <div class="column has-text-centered has-text-right-tablet">
+                        <p class="subtitle is-6">&copy; Wiltshire. All right reserved.</p>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <!-- ./footer -->
     <!-- the javascript is down here because it needs to wait for the DOM to be ready. Otherwise I could add a dom.onload type thing and put it in the head -->
     <script src="js/juxtapose.js"></script>
 

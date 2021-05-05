@@ -9,6 +9,11 @@ async function updateImageDisplay() {
   document.getElementById("takenImage").classList.remove("is-hidden");
   document.getElementById("dropdown").classList.add("is-hidden");
 
+  // encase someone clicks the camera button at bottom of page
+  if (window.scrollY > 92) {
+    window.scrollTo(0, 55);
+  }
+
   // upload and show the image
   let input = document.getElementById("choosefilebutton");
   let imagefile = input.files[0];
@@ -104,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const $target = document.getElementById(target);
 
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
+        // el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
 
       });
@@ -113,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-async function toggleDropdown(){
+async function toggleDropdown() {
   let dropdownButton = document.getElementById("dropdown");
   dropdownButton.classList.toggle("is-active");
 }
