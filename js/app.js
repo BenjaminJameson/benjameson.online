@@ -15,7 +15,7 @@ async function updateImageDisplay() {
 
   // encase someone clicks the camera button at bottom of page
   if (window.scrollY > 92) {
-    window.scrollTo(0, 55);
+    window.scrollTo(0, 0);
   }
 
   // upload and show the image
