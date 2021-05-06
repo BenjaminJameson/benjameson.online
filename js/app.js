@@ -135,20 +135,9 @@ function toggleDropdown() {
   let clicks = 0;
   let dropdownButton = document.getElementById("dropdown");
   dropdownButton.classList.toggle("is-active");
-
-  // dropdownButton.addEventListener("click", toggle);
-  // function toggle() {
-  //   console.log("i clicked in the dropdown");
-  //   clicks += 1;
-  //   console.log(clicks);
-  //   if (clicks > 1) {
-  //     console.log("second click");
-  //     dropdownButton.classList.remove("is-active");
-  //     dropdownButton.removeEventListener("click", toggle);
-  //     return
-  //   }
   };
 
+  // if I want the toggle to close when download is clicked
   // document.getElementById("downloadButton").addEventListener("mouseup",function(){
   //   let dropdownButton = document.getElementById("dropdown");
   // dropdownButton.classList.toggle("is-active");
