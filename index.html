@@ -18,16 +18,6 @@
 </head>
 
 <style>
-    @keyframes greyscale-fade-in {
-        from {
-            filter: grayscale(100%);
-        }
-
-        to {
-            filter: grayscale(0%);
-        }
-    }
-
     .customTopRight {
         position: relative;
         z-index: 9999999;
@@ -90,7 +80,7 @@
                             <img id="mainImage" src="images/lady-after.jpg">
                             <img id="mainImage-bw" src="images/lady-before.jpg">
                         </div>
-                        <img id="takenImage" src="">
+                        <img id="takenImage" style="filter: grayscale(100%);" src="">
                     </figure>
                     <div id="cameraButton" class="content">
                         <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
@@ -121,16 +111,16 @@
                             <div class="dropdown-menu" id="dropdown-menu3" role="menu">
                                 <div onclick="toggleDropdown()" id="dimScreen"></div>
                                 <div class="dropdown-content">
-                                    <label id="choose-file-button-label" class="dropdown-item is-right"
+                                    <label id="choose-file-button-label" class="dropdown-item is-right is-size-6"
                                         for="choosefilebutton">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-camera"></i>
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-camera"></i>
                                         </span>
                                         <span>Camera</span>
                                     </label>
-                                    <a id="downloadButton" href="#" class="dropdown-item" download="MemoriesinColor">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-download" aria-hidden="true"></i>
+                                    <a id="downloadButton" href="#" class="dropdown-item is-size-6" download="MemoriesinColor">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-download" aria-hidden="true"></i>
                                         </span>
                                         <span>Download</span>
                                     </a>
@@ -166,7 +156,7 @@
     <!-- reviews -->
     <section class="section">
         <div class="container has-text-centered py-4">
-            <h2 class="title mb-6">What's So Great About Memories in Color?</h2>
+            <h2 class="title mb-6">What's So Great About Memories In Color?</h2>
             <div class="columns">
                 <div class="column">
                     <div class="level">
@@ -175,8 +165,8 @@
                                     alt=""></figure>
                         </div>
                     </div>
-                    <p class="block">It's a really cool network. Like, we had a fight with Richard at one point, and I
-                        think they deleted some of my data, but then they brought it back. Just bro's being bro's.</p>
+                    <p class="block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores
+                        repellendus deserunt cum doloribus accusamus architecto fuga beatae eaque iste.</p>
                     <h5 class="title is-5">Mary</h5>
                     <p class="subtitle">Grandmothers Photo</p>
                 </div>
@@ -187,8 +177,8 @@
                                     alt=""></figure>
                         </div>
                     </div>
-                    <p class="block">This is such a great product that I feel aroused every time I use it. I didn't know
-                        the boys would be able to build, but god damn it, they did it. Kickass!</p>
+                    <p class="block">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut minima quis ea
+                        mollitia voluptatibus fugiat tempora placeat ex excepturi dolorem?</p>
                     <h5 class="title is-5">Micaela</h5>
                     <p class="subtitle">Grandfathers Photo</p>
                 </div>
@@ -199,8 +189,8 @@
                                     alt=""></figure>
                         </div>
                     </div>
-                    <p class="block">Even though I have been dismantled, I live on as an artificial intelligence on the
-                        PiperNet. I really like it here. Still waiting for Jared to Piper-chat with me sometime.</p>
+                    <p class="block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maxime aut, odit
+                        repellat accusantium nesciunt commodi quae dolor pariatur non.</p>
                     <h5 class="title is-5">Charles</h5>
                     <p class="subtitle">Distant Relatives Photo</p>
                 </div>
@@ -211,19 +201,17 @@
 
     <!-- bottom camera button -->
     <section class="section" style="max-width: 400px;">
-        <h1 class="title">Try it out</h1>
-        <div class="buttons">
-            <a href="#">
-                <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
-                    for="choosefilebutton">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-camera"></i>
-                    </span>
-                    <span>Camera</span>
-                </label>
-            </a>
-            <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
-        </div>
+        <h1 class="title">Turn A Memory Into Color</h1>
+        <a href="#">
+            <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
+                for="choosefilebutton">
+                <span class="icon">
+                    <i class="fas fa-lg fa-camera"></i>
+                </span>
+                <span>Camera</span>
+            </label>
+        </a>
+        <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
     </section>
 
     <!-- .footer -->
