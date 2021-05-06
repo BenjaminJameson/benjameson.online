@@ -7,7 +7,10 @@ window.onload = function () {
 
 async function updateImageDisplay() {
   document.getElementById("takenImage").classList.remove("is-hidden");
-  document.getElementById("dropdown").classList.add("is-hidden");
+  document.getElementById("shareButton").classList.add("is-hidden");
+  document.getElementById("cameraButton").classList.remove("is-hidden");
+  let dropdownButton = document.getElementById("dropdown");
+  dropdownButton.classList.remove("is-active");
 
   if (document.getElementById("newSlider")) {
     document.getElementById("newSlider").remove();
@@ -69,7 +72,8 @@ async function updateImageDisplay() {
       newSlider.addEventListener("DOMNodeInserted", function () {
         newSlider.classList.remove("is-hidden");
         document.getElementById("takenImage").classList.add("is-hidden");
-        document.getElementById("dropdown").classList.remove("is-hidden");
+        document.getElementById("cameraButton").classList.add("is-hidden");
+        document.getElementById("shareButton").classList.remove("is-hidden");
         document.getElementById("choose-file-button-label").classList.remove("is-loading");
       });
 
@@ -127,7 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-async function toggleDropdown() {
+function toggleDropdown() {
+  let clicks = 0;
   let dropdownButton = document.getElementById("dropdown");
   dropdownButton.classList.toggle("is-active");
-}
+
+  // dropdownButton.addEventListener("click", toggle);
+  // function toggle() {
+  //   console.log("i clicked in the dropdown");
+  //   clicks += 1;
+  //   console.log(clicks);
+  //   if (clicks > 1) {
+  //     console.log("second click");
+  //     dropdownButton.classList.remove("is-active");
+  //     dropdownButton.removeEventListener("click", toggle);
+  //     return
+  //   }
+  };
+
+  // document.getElementById("downloadButton").addEventListener("mouseup",function(){
+  //   let dropdownButton = document.getElementById("dropdown");
+  // dropdownButton.classList.toggle("is-active");
+  // })
+

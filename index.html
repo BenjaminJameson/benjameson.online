@@ -29,13 +29,27 @@
     }
 
     .customTopRight {
-        position: absolute;
+        position: relative;
         z-index: 9999999;
-        top: 19px;
-        right: 19px;
+        top: -40px;
+        right: 0px;
     }
-    .navbar-burger span{
+
+    .navbar-burger span {
         height: 0px;
+    }
+
+    #dimScreen {
+        position: fixed;
+        padding: 0;
+        margin: 0;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
     }
 </style>
 
@@ -48,26 +62,16 @@
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
-                <!-- <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span> -->
                 <span aria-hidden="true" class="icon">
                     <i class="fas fa-bars"></i>
                 </span>
             </a>
         </div>
-
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
-                </a>
-                <a class="navbar-item">
-                    About
-                </a>
-                <a class="navbar-item">
-                    FAQ
-                </a>
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">About</a>
+                <a class="navbar-item">Questions?</a>
             </div>
         </div>
     </nav>
@@ -87,35 +91,8 @@
                             <img id="mainImage-bw" src="images/lady-before.jpg">
                         </div>
                         <img id="takenImage" src="">
-                        <div id="dropdown" class="customTopRight is-hidden dropdown is-right is-pulled-right">
-                            <div class="dropdown-trigger">
-                                <button class="button is-ghost has-text-dark" onclick="toggleDropdown()"
-                                    aria-haspopup="true" aria-controls="dropdown-menu3">
-                                    <span class="icon">
-                                        <i class="fas fa-stack-2x fa-circle fa-inverse" aria-hidden="true"></i>
-                                        <i class="fas fa-stack fa-ellipsis-v" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item is-right" onclick="share()">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-share-alt" aria-hidden="true"></i>
-                                        </span>
-                                        <span>Share</span>
-                                    </a>
-                                    <a id="downloadButton" href="#" class="dropdown-item" download="MemoriesinColor">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-download" aria-hidden="true"></i>
-                                        </span>
-                                        <span>Download</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </figure>
-                    <div class="buttons">
+                    <div id="cameraButton" class="content">
                         <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
                             for="choosefilebutton">
                             <span class="icon">
@@ -125,15 +102,54 @@
                         </label>
                         <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
                     </div>
-                    <div class="has-text-centered">
-                        <h1 class="title is-5 has-text-centered">Bring old memories to life</h1>
-                        <h2 class="subtitle is-6">Use ‘Camera’ to take a photo and wait for the magic</h2>
+                    <div id="shareButton" class="content is-hidden">
+                        <button class="button is-fullwidth is-rounded is-active" onclick="share()">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-share-alt"></i>
+                            </span>
+                            <span>Share</span>
+                        </button>
+                        <div id="dropdown" class="customTopRight dropdown is-up is-right is-pulled-right">
+                            <div class="dropdown-trigger">
+                                <button id="toggleDropdownButton" class="button is-ghost has-text-dark"
+                                    onclick="toggleDropdown()" aria-haspopup="true" aria-controls="dropdown-menu3">
+                                    <span class="icon">
+                                        <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                                <div onclick="toggleDropdown()" id="dimScreen"></div>
+                                <div class="dropdown-content">
+                                    <label id="choose-file-button-label" class="dropdown-item is-right"
+                                        for="choosefilebutton">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-camera"></i>
+                                        </span>
+                                        <span>Camera</span>
+                                    </label>
+                                    <a id="downloadButton" href="#" class="dropdown-item" download="MemoriesinColor">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-download" aria-hidden="true"></i>
+                                        </span>
+                                        <span>Download</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- ./image -->
+
+    <!-- <section class="section">
+        <div class="block has-text-centered">
+            <h1 class="title is-5">Bring old memories to life</h1>
+            <h2 class="subtitle is-6">Use ‘Camera’ to take a photo and wait for the magic</h2>
+        </div>
+    </section> -->
 
     <!-- about -->
     <section class="section">
@@ -222,7 +238,7 @@
                 <div class="level-right">
                     <a class="level-item" href="#">Home</a>
                     <a class="level-item" href="#">About</a>
-                    <a class="level-item" href="#">FAQ</a>
+                    <a class="level-item" href="#">Questions?</a>
                 </div>
                 <hr>
                 <div class="columns">
