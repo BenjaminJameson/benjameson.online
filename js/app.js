@@ -2,7 +2,16 @@
 window.onload = function () {
   const chooseFileButton = document.getElementById("choosefilebutton");
   chooseFileButton.addEventListener("change", updateImageDisplay);
-}
+
+  // toggle the FAQ text
+  let h3tags = document.getElementsByTagName("h3");
+  Array.from(h3tags).forEach(function (element) {
+    element.addEventListener("click", function (e) {
+      // console.log(e.target.nextElementSibling);
+      e.target.nextElementSibling.classList.toggle("is-hidden");
+    })
+  });
+};
 
 
 async function updateImageDisplay() {
@@ -132,14 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function toggleDropdown() {
-  let clicks = 0;
   let dropdownButton = document.getElementById("dropdown");
   dropdownButton.classList.toggle("is-active");
-  };
+};
 
-  // if I want the toggle to close when download is clicked
-  // document.getElementById("downloadButton").addEventListener("mouseup",function(){
-  //   let dropdownButton = document.getElementById("dropdown");
-  // dropdownButton.classList.toggle("is-active");
-  // })
+// if I want the toggle to close when download is clicked
+// document.getElementById("downloadButton").addEventListener("mouseup",function(){
+//   let dropdownButton = document.getElementById("dropdown");
+// dropdownButton.classList.toggle("is-active");
+// })
+
 
