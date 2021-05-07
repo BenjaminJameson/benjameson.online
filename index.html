@@ -83,7 +83,7 @@
                         <img id="takenImage" style="filter: grayscale(100%);" src="">
                     </figure>
                     <div id="cameraButton" class="content">
-                        <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
+                        <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-primary"
                             for="choosefilebutton">
                             <span class="icon">
                                 <i class="fas fa-lg fa-camera"></i>
@@ -93,7 +93,7 @@
                         <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
                     </div>
                     <div id="shareButton" class="content is-hidden">
-                        <button class="button is-fullwidth is-rounded is-active" onclick="share()">
+                        <button class="button is-fullwidth is-rounded is-primary" onclick="share()">
                             <span class="icon">
                                 <i class="fas fa-lg fa-share-alt"></i>
                             </span>
@@ -101,7 +101,7 @@
                         </button>
                         <div id="dropdown" class="customTopRight dropdown is-up is-right is-pulled-right">
                             <div class="dropdown-trigger">
-                                <button id="toggleDropdownButton" class="button is-ghost has-text-dark"
+                                <button id="toggleDropdownButton" class="button is-ghost has-text-light"
                                     onclick="toggleDropdown()" aria-haspopup="true" aria-controls="dropdown-menu3">
                                     <span class="icon">
                                         <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
@@ -204,20 +204,7 @@
     </section>
     <!-- /reviews -->
 
-    <!-- bottom camera button -->
-    <section class="section" style="max-width: 400px;">
-        <h1 class="title has-text-centered">Turn A Memory Into Color</h1>
-        <a href="#">
-            <label id="choose-file-button-label" class="button is-fullwidth is-rounded is-active"
-                for="choosefilebutton">
-                <span class="icon">
-                    <i class="fas fa-lg fa-camera"></i>
-                </span>
-                <span>Camera</span>
-            </label>
-        </a>
-        <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
-    </section>
+
 
     <section class="section">
         <div class="container py-4">
@@ -230,9 +217,9 @@
                             </span>
                         </div>
                         <div class="media-content">
-                            <h3 id="question1" class="title is-5">How is a decentralized network different from the
+                            <h3 class="title is-5">How is a decentralized network different from the
                                 traditional web?</h3>
-                            <p id="answer1" class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            <p class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                 Earum quae asperiores provident sunt labore hic adipisci ad exercitationem consequatur
                                 voluptate!</p>
                         </div>
@@ -245,9 +232,9 @@
                             </span>
                         </div>
                         <div class="media-content">
-                            <h3 id="question2" class="title is-5">How is a decentralized network different from the
+                            <h3 class="title is-5">How is a decentralized network different from the
                                 traditional web?</h3>
-                            <p id="answer2" class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            <p class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                 Earum quae asperiores provident sunt labore hic adipisci ad exercitationem consequatur
                                 voluptate!</p>
                         </div>
@@ -260,9 +247,9 @@
                             </span>
                         </div>
                         <div class="media-content">
-                            <h3 id="question3" class="title is-5">How is a decentralized network different from the
+                            <h3 class="title is-5">How is a decentralized network different from the
                                 traditional web?</h3>
-                            <p id="answer3" class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            <p class="block is-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                 Earum quae asperiores provident sunt labore hic adipisci ad exercitationem consequatur
                                 voluptate!</p>
                         </div>
@@ -270,6 +257,21 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- bottom camera button -->
+    <section class="section" style="max-width: 400px;">
+        <h1 class="title has-text-centered">Turn A Memory Into Color</h1>
+        <a href="#">
+            <label id="choose-file-button-label" class="button is-primary is-fullwidth is-rounded"
+                for="choosefilebutton">
+                <span class="icon">
+                    <i class="fas fa-lg fa-camera"></i>
+                </span>
+                <span>Camera</span>
+            </label>
+        </a>
+        <input id="choosefilebutton" style="display: none;" type="file" accept="image/*">
     </section>
 
     <!-- .footer -->
@@ -282,29 +284,29 @@
                     </div>
                 </div>
                 <div class="level-right">
-                    <a class="level-item" href="#">Home</a>
-                    <a class="level-item" href="#">How To Use</a>
-                    <a class="level-item" href="#">Questions?</a>
+                    <a class="level-item has-text-dark" href="#">Home</a>
+                    <a class="level-item has-text-dark" href="#">How To Use</a>
+                    <a class="level-item has-text-dark" href="#">Questions?</a>
                 </div>
                 <hr>
                 <div class="columns">
                     <div class="column">
-                        <a class="button is-ghost" href="#">
+                        <a class="button is-ghost has-text-dark" href="#">
                             <span class="icon">
                                 <i class="fab fa-lg fa-instagram"></i>
                             </span>
                         </a>
-                        <a class="button is-ghost" href="#">
+                        <a class="button is-ghost has-text-dark" href="#">
                             <span class="icon">
                                 <i class="fab fa-lg fa-facebook"></i>
                             </span>
                         </a>
-                        <a class="button is-ghost" href="#">
+                        <a class="button is-ghost has-text-dark" href="#">
                             <span class="icon">
                                 <i class="fab fa-lg fa-twitter"></i>
                             </span>
                         </a>
-                        <a class="button is-ghost" href="#">
+                        <a class="button is-ghost has-text-dark" href="#">
                             <span class="icon">
                                 <i class="fab fa-lg fa-tiktok"></i>
                             </span>
