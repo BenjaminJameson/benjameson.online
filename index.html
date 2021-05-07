@@ -41,6 +41,13 @@
         height: 100%;
         background: rgba(255, 255, 255, 0.5);
     }
+
+    .sliderIconPosition {
+        position: relative;
+        z-index: 9999999;
+        bottom: -368px;
+        right: 18.5px;
+    }
 </style>
 
 <body>
@@ -61,7 +68,7 @@
             <div class="navbar-start">
                 <a class="navbar-item">Home</a>
                 <a class="navbar-item">How To Use</a>
-                <a class="navbar-item">Questions?</a>
+                <a class="navbar-item" href="#questions">Questions?</a>
             </div>
         </div>
     </nav>
@@ -74,7 +81,7 @@
             <div class="columns">
                 <div class="column" style="max-width: 400px;">
                     <figure id="imageBox" class="image box">
-                        <div id="juxtapose-wrapper" class="juxtapose" data-startingposition="90%"
+                        <div id="juxtapose-wrapper" class="juxtapose" data-startingposition="64.5%"
                             data-showlabels="false" data-showcredits="false" data-animate="false" data-mode="horizontal"
                             data-makeresponsive="true">
                             <img id="mainImage" src="images/lady-after.jpg">
@@ -204,9 +211,7 @@
     </section>
     <!-- /reviews -->
 
-
-
-    <section class="section">
+    <section id="questions" class="section">
         <div class="container py-4">
             <h2 class="title has-text-centered mb-6">Frequently Asked Questions</h2>
             <div class="columns is-multiline">
@@ -286,7 +291,7 @@
                 <div class="level-right">
                     <a class="level-item has-text-dark" href="#">Home</a>
                     <a class="level-item has-text-dark" href="#">How To Use</a>
-                    <a class="level-item has-text-dark" href="#">Questions?</a>
+                    <a class="level-item has-text-dark" href="#questions">Questions?</a>
                 </div>
                 <hr>
                 <div class="columns">

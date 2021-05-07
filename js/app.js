@@ -11,6 +11,10 @@ window.onload = function () {
       e.target.nextElementSibling.classList.toggle("is-hidden");
     })
   });
+
+  document.getElementsByClassName("jx-control")[0].innerHTML = '<span class="icon sliderIconPosition"><i class="fas fa-lg fa-circle fa-stack-1x fa-inverse fa-3x" style="font-size: 40px"></i><i class="fas fa-lg fa-arrows-alt-h fa-stack-2x has-text-dark" style="left: 6px; font-size: 28px;"></i></span>';
+  
+  
 };
 
 

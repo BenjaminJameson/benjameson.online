@@ -51,14 +51,14 @@ div.jx-control {
 }
 
 div.jx-controller {
-	position: absolute;
+	/* position: absolute;
 	margin: auto;
 	top: 0;
 	bottom: 0;
 	height: 60px;
 	width: 9px;
 	margin-left: -3px;
-	background-color: currentColor;
+	background-color: currentColor; */
 }
 
 .vertical div.jx-controller {
@@ -92,17 +92,17 @@ div.jx-arrow {
 
 
 div.jx-arrow.jx-left {
-	left: 2px;
+	/* left: 2px;
 	border-style: solid;
 	border-width: 8px 8px 8px 0;
-	border-color: transparent currentColor transparent transparent;
+	border-color: transparent currentColor transparent transparent; */
 }
 
 div.jx-arrow.jx-right {
-	right: 2px;
+	/* right: 2px;
 	border-style: solid;
 	border-width: 8px 0 8px 8px;
-	border-color: transparent transparent transparent currentColor;
+	border-color: transparent transparent transparent currentColor; */
 }
 
 .vertical div.jx-arrow.jx-left {
