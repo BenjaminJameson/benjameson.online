@@ -42,16 +42,54 @@
         background: rgba(255, 255, 255, 0.5);
     }
 
-    .sliderIconPosition {
-        /* position: relative;
-        z-index: 9999999;
-        bottom: -368px;
-        right: 18.5px; */
+    /* The animation code */ 
+    @keyframes jx-handle {
+        from {
+           left: 0%;
+        }
+
+        to {
+            left: 64%;
+        }
     }
-    /* this is a bulma class, needed to bring the slider down a bit, not sure why */
-    /* .icon{
-        height: 48rem;
-    } */
+
+    /* The element to apply the animation to */
+    .jx-handle {
+        animation-name: jx-handle;
+        animation-duration: 4s;
+    }
+    /* The animation code */
+    @keyframes jx-left {
+        from {
+            width: 0%;
+        }
+
+        to {
+            width: 64%;
+        }
+    }
+
+    /* The element to apply the animation to */
+    .jx-left {
+        animation-name: jx-left;
+        animation-duration: 4s;
+    }
+    /* The animation code */
+    @keyframes jx-right {
+        from {
+            width: 100%;
+        }
+
+        to {
+            width: 36%;
+        }
+    }
+
+    /* The element to apply the animation to */
+    .jx-right {
+        animation-name: jx-right;
+        animation-duration: 4s;
+    }
 </style>
 
 <body>
